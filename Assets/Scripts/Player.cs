@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     private bool _laserActive;
     public float speed = 5.0f;
 
+    public bool powerUp = false;
+    public int lives = 3;
+
     private void Update()
     {
         // Use GetKey vs getKey down because GetKey will do it for a press and hold
@@ -54,6 +57,10 @@ public class Player : MonoBehaviour
         )
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            this.powerUp = true;
         }
     }
 }
